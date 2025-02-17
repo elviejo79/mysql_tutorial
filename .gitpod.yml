@@ -1,6 +1,32 @@
 # .gitpod.yml
 image: gitpod/workspace-mysql
+tasks:
+  - name: Setup MySQL Sample Database
+    init: |
+      echo "Downloading MySQL sample database..."
+      wget https://www.mysqltutorial.org/wp-content/uploads/2023/10/mysqlsampledatabase.zip
+
+      echo "Unzipping the database file..."
+      unzip mysqlsampledatabase.zip
+
+      # If the extracted file is not at the root, adjust the path accordingly.
+      # Here, we assume the SQL file is named "mysqlsampledatabase.sql".
+      echo "Importing the SQL file into MySQL..."
+      mysql -u root -e "source mysqlsampledatabase.sql"
+
 vscode:
   extensions:
     - mtxr.sqltools
     - mtxr.sqltools-driver-mysql
+
+  settings:
+    "sqltools.connections": [
+      {
+        "name": "Local MySQL",
+        "driver": "MySQL",
+        "server": "localhost",
+        "port": 3306,
+        "username": "root",
+        "database": "classicmodels"
+      }
+    ]
