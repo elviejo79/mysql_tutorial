@@ -1,0 +1,13 @@
+# .gitpod.yml
+tasks:
+  - init: |
+      sudo apt-get update && sudo apt-get install -y mysql-server mysql-client
+      # Optionally, set up MySQL to allow remote connections
+      sudo sed -i 's/bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+  - command: |
+      # Start MySQL service
+      sudo service mysql start
+      # (Optional) Create a test database and a user
+      mysql -u root -e "CREATE DATABASE example_db;"
+      mysql -u root -e "CREATE USER 'user'@'%' IDENTIFIED BY 'password';"
+      mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'user'@'%'; FLUSH PRIVILEGES;"
