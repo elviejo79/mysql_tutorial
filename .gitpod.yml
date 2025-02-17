@@ -1,2 +1,6 @@
 # .gitpod.yml
 image: gitpod/workspace-mysql
+vscode:
+  extensions:
+    - mtxr.sqltools
+    - mtxr.sqltools-driver-mysql
