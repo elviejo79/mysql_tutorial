@@ -1,6 +1,4 @@
 # .gitpod.yml
-$schema: "https://gitpod.io/schemas/gitpod-schema.json"
-
 image: gitpod/workspace-mysql
 tasks:
   - name: Setup MySQL Sample Database
