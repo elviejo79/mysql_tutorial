@@ -1,4 +1,6 @@
 # .gitpod.yml
+$schema: "https://gitpod.io/schemas/gitpod-schema.json"
+
 image: gitpod/workspace-mysql
 tasks:
   - name: Setup MySQL Sample Database
@@ -18,15 +20,3 @@ vscode:
   extensions:
     - mtxr.sqltools
     - mtxr.sqltools-driver-mysql
-
-  settings:
-    "sqltools.connections": [
-      {
-        "name": "Local MySQL",
-        "driver": "MySQL",
-        "server": "localhost",
-        "port": 3306,
-        "username": "root",
-        "database": "classicmodels"
-      }
-    ]
